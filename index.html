@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div class="box">
+        <div class="full">
+            <div><p>WEATHER APP</p></div>
+            <div class="full1">
+                <p>PLACE</p>
+                <input type="text" id="input1" placeholder="City Name">
+            </div>
+            <div class="full2">
+                    <p>TEMPERATURE (Celsius)</p>
+                    <input type="text" id="input2">
+                    
+            </div>
+            <div class="3">
+
+                    <p>HUMIDITY</p>
+                    <input type="text" id="input3">
+
+            </div>
+            <div class="full4">
+                    <p>CLOUD</p>
+                    <input type="text" id="input4">
+                    
+            </div>
+            <div class="full5">
+
+                    <p>WIND (km/ph)</p>
+                    <input type="text" id="input5">
+            </div>
+            <div class="full6">
+
+                    <button onclick="display()"  type="button" id="button1">SUBMIT</button>
+            </div>
+
+
+        </div>
+
+    </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <script>
+           function display(){
+
+           
+           let x= document.getElementById("input1").value; 
+           
+           
+           
+           axios.get("http://api.openweathermap.org/data/2.5/weather?q="+x+"&units=metric&id=524901&APPID=9ff025bcd3c4c833b43f07fdf3ce209f")
+           .then(function (response) {
+               console.log(response)
+               let a =response.data;
+               let temp=a.main.temp;
+               let hum=a.main.humidity;
+               let cloud=a.weather[0].description;
+               let wind=a.wind.speed
+               console.log(temp)
+
+
+               let y=document.getElementById("input2").value=temp;
+               let c=document.getElementById("input3").value=hum;
+               let v=document.getElementById("input4").value=cloud;
+               let b=document.getElementById("input5").value=wind;
+                
+            })
+           .catch(function (error) {
+               console.log(error)
+           })
+           
+        
+           }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>
